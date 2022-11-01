@@ -1,0 +1,55 @@
+from email import header
+from hashlib import new
+from smtpd import SMTPServer
+from urllib import request
+import requests 
+from bs4 import BeautifulSoup
+import smtplib
+sender='nu_vreau_spam@coneasporin.ro'
+subject='Pretul a scazut la:'
+to_addr_list = ['vc069962877@gmail.com']
+cc_addr_list = ['']
+def sendemail(sender, message, subject, to_addr_list, cc_addr_list=[]):
+    try:
+        smtpserver='mail.x-it.ro:26'
+        header = 'From: %s\n' % sender
+        header += 'To: %s\n' % ','.join(to_addr_list)
+        header += 'Cc: %s\n' % ','.join(cc_addr_list)
+        header += 'Subject: %s\n\n' % subject
+        message = header + message
+
+        server = smtplib.SMTP(SMTPServer)
+        server.starttls()
+        server.login(sender,"stiinte216_2022")
+        problems = server.sendmail(sender, to_addr_list, message)
+        server.quit()
+        return True
+    except:
+        print("Error: unable to send email")
+
+
+
+def trimitere_email():
+    server=smtplib.SMTP('mail.x-it.ro',26)
+    server.starttls()
+    server.login("nu_vreau_spam@coneasporin.ro","stiinte216_2022")
+    server.sendmail("nu_vreau_spam@coneasporin.ro","vc069962877@gmail.com","Subject: Pretul a scazut |n|n Pretul a scazut la 1000 lei")
+    print("Email Trimis")
+    server.quir()
+
+def data_scraping():
+    req = requests.get('https://www.emag.ro/telefon-mobil-apple-iphone-14-pro-1tb-5g-gold-mq2v3rx-a/pd/DTDY4LMBM/?ref=fam#1-TB')
+    soup=BeautifulSoup(req.text, 'html.parser')
+    price=soup.find('p', attrs={'class':'product-new-price'}).text
+    new_price=price[0:5]
+    new_price=new_price.replace(".","")
+    new_price=int(new_price)
+    if(new_price<10000):
+        sendemail(sender,"Pretul a scazut:"+str(new_price), subject, to_addr_list, cc_addr_list=[])
+        print("Pretul sa modificat  :)")
+    else:
+        print("Pretul e acelasi :(")
+    print(price)
+   
+
+data_scraping()
