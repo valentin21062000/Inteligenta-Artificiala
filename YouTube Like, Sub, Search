@@ -1,0 +1,104 @@
+import pyautogui
+import time
+import keyboard
+
+def cautare_youtube():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\youtube_search.png', confidence=0.7) !=None:
+        camp_youtube = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\youtube_search.png', confidence=0.7)
+        pyautogui.click(camp_youtube)
+        time.sleep(3)
+        pyautogui.write("Zona IT")
+        pyautogui.press('enter')
+        print("Imaginea se afla pe ecran")
+    else:
+        print("Imaginea nu se afla pe ecran")
+    
+
+
+def cautare_google():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\cautare_google.png', confidence=0.7) or pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\google_search2.png', confidence=0.7) !=None:
+        camp_google = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\cautare_google.png', confidence=0.7) or pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\google_search2.png', confidence=0.7)
+        pyautogui.click(camp_google)
+        time.sleep(3)
+        pyautogui.write("https://youtube.com")
+        pyautogui.press('enter')
+        print("Imaginea se afla pe ecran")
+    else:
+        print("Imaginea nu se afla pe ecran")
+
+
+#def sub_youtube():
+#    if pyautogui.locateonscreen(r'c:\users\valen\source\repos\ia lab4\ia lab4\sub.png', confidence=0.7) !=none:
+#        sub_youtube = pyautogui.locateonscreen(r'c:\users\valen\source\repos\ia lab4\ia lab4\sub.png', confidence=0.7)
+#        pyautogui.click(sub_youtube)
+#        time.sleep(3)
+#        print("imaginea se afla pe ecran")
+#    else:
+#        print("imaginea nu se afla pe ecran")
+
+
+def video_click():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\video.png', confidence=0.7) !=None:
+        video = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\video.png', confidence=0.7)
+        pyautogui.click(video)
+        time.sleep(3)
+
+
+
+def canal_click():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\canal.png', confidence=0.7) !=None:
+        canal = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\canal.png', confidence=0.7)
+        pyautogui.click(canal)
+        time.sleep(3)
+
+def bar_click():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\bar2.png', confidence=0.7) or pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\bar3.png', confidence=0.7) !=None:
+        bar = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\bar2.png', confidence=0.7) or pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\bar3.png', confidence=0.7)
+        pyautogui.click(bar)
+        pyautogui.moveRel(0, 150)
+        pyautogui.click()
+        time.sleep(3)
+
+
+def videochanel_click():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\canalvideo.png', confidence=0.7) !=None:
+        canalvideo = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\canalvideo.png', confidence=0.7)
+        pyautogui.click(canalvideo)
+        time.sleep(3)
+
+
+def vizvideo1():
+    x=200
+    y=800
+    pyautogui.click(x+300, 800)
+    time.sleep(10)
+
+
+def return_page():
+    if pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\return.png', confidence=0.7) !=None:
+        returnp = pyautogui.locateOnScreen(r'C:\Users\valen\source\repos\IA Lab4\IA Lab4\return.png', confidence=0.7)
+        pyautogui.click(returnp)
+        time.sleep(3)
+
+def coordonate():
+    print(pyautogui.position())
+
+
+
+
+time.sleep(2)
+#cautare_google()
+#time.sleep(3)
+#cautare_youtube()
+#time.sleep(3)
+#sub_youtube()
+#video_click()
+#canal_click()
+#time.sleep(3)
+#videochanel_click()
+#bar_click()
+vizvideo1()
+return_page()
+vizvideo1()
+
+coordonate()
