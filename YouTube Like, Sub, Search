@@ -67,10 +67,8 @@ def videochanel_click():
         time.sleep(3)
 
 
-def vizvideo1():
-    x=200
-    y=800
-    pyautogui.click(x+300, 800)
+def vizvideo1(x):
+    pyautogui.click(x, 800)
     time.sleep(10)
 
 
@@ -84,6 +82,10 @@ def coordonate():
     print(pyautogui.position())
 
 
+def scrol(b):
+    pyautogui.scroll(b)
+    time.sleep(2)
+
 
 
 time.sleep(2)
@@ -93,12 +95,30 @@ time.sleep(2)
 #time.sleep(3)
 #sub_youtube()
 #video_click()
-#canal_click()
+canal_click()
 #time.sleep(3)
-#videochanel_click()
+videochanel_click()
 #bar_click()
-vizvideo1()
-return_page()
-vizvideo1()
+
+while not keyboard.is_pressed('esc'):
+    i=1
+    z=0
+    x=500
+    b=0
+    while(i>0):
+
+            if(i<3):
+                videochanel_click()
+                scrol(b)
+                vizvideo1(x)
+                x=x+350
+                return_page()
+                i=i+1
+            else:
+                b=b-400
+                i=1
+                x=500
+        
+
 
 coordonate()
