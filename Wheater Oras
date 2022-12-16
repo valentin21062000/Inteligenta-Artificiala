@@ -1,0 +1,24 @@
+from urllib import request
+import requests
+import pickle
+API_KEY = "4b0fd5d648d959c3a4791d145810f3a0"
+BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+
+city = input("Introduce numele Orasului: ")
+request_url = f"{BASE_URL}?appid={API_KEY}&q={city}&units=metric"
+response = requests.get(request_url)
+
+
+if response.status_code == 200:
+    data = response.json()
+    vreme = data['weather'][0]['description']
+    temperature = round(data["main"]["temp"], 2)
+    wind=data['wind']['speed']
+    print("Vremea: ", vreme)
+    print("Temperatura", temperature)
+    print("Viteza vantului", wind)
+    file_name = "Meteo.txt"
+    with open(file_name, "w") as file:
+        file.write('Meteo oras = ' + city + '       Vremea = ' + vreme + '      Temperatura = ' + str(temperature) + '      Viteza vantului = ' + str(wind))
+else:
+    print("Am intampinat o eroare")
